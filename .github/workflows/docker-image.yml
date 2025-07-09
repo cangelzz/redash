@@ -5,6 +5,11 @@ on:
     branches: [ "msbuild" ]
   pull_request:
     branches: [ "msbuild" ]
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version tag to deploy'
+        required: false
 
 jobs:
 
