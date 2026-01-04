@@ -1,5 +1,6 @@
 [project]
-requires-python = ">=3.9"
+name = "redash"
+requires-python = ">=3.10"
 
 [tool.black]
 target-version = ['py310']
@@ -93,6 +94,8 @@ setuptools = "78.1.1"
 h11 = "0.16.0"
 boto3 = "1.38.44"
 protobuf = "4.25.8"
+filelock = { version = "3.20.1", python = ">=3.10" }
+marshmallow = "3.26.2"
 
 [tool.poetry.group.all_ds]
 optional = true
