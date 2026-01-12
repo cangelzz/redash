@@ -96,6 +96,7 @@ boto3 = "1.38.44"
 protobuf = "4.25.8"
 filelock = { version = "3.20.1", python = ">=3.10" }
 marshmallow = "3.26.2"
+pynacl = "1.6.2"
 
 [tool.poetry.group.all_ds]
 optional = true

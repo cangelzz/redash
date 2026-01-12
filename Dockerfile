@@ -112,7 +112,7 @@ ARG install_groups="main,all_ds,dev"
 RUN /etc/poetry/bin/poetry install --only $install_groups $POETRY_OPTIONS
 RUN rm -f /etc/poetry/venv/lib/python3.10/site-packages/setuptools-65.5.0.dist-info/METADATA \
   /usr/local/lib/python3.10/site-packages/urllib3-1.26.19.dist-info/METADATA \
-  /usr/local/lib/python3.10/site-packages/urllib3-2.5.0.dist-info/METADATA \
+  /usr/local/lib/python3.10/site-packages/urllib3-2.6.2.dist-info/METADATA \
   /usr/local/lib/python3.10/site-packages/pip-23.0.1.dist-info/METADATA
 COPY --chown=redash . /app
 COPY --from=frontend-builder --chown=redash /frontend/client/dist /app/client/dist
