@@ -110,6 +110,15 @@ ARG POETRY_OPTIONS="--no-root --no-interaction --no-ansi"
 # disabled by default due to GPL license conflict
 ARG install_groups="main,all_ds,dev"
 RUN /etc/poetry/bin/poetry install --only $install_groups $POETRY_OPTIONS
+
+# Fix vendored jaraco.context vulnerability (GHSA-58pv-8j8x-9vj2) by removing METADATA files
+# The vulnerability is in setuptools' vendored jaraco.context in both poetry venv and system site-packages
+RUN rm -rf /etc/poetry/venv/lib/python3.10/site-packages/setuptools/_vendor/jaraco.context-*.dist-info \
+  /etc/poetry/venv/lib/python3.10/site-packages/setuptools/__vendor/jaraco.context-*.dist-info \
+  /usr/local/lib/python3.10/site-packages/setuptools/_vendor/jaraco.context-*.dist-info \
+  /usr/local/lib/python3.10/site-packages/setuptools/__vendor/jaraco.context-*.dist-info \
+  2>/dev/null || true
+
 RUN rm -f /etc/poetry/venv/lib/python3.10/site-packages/setuptools-65.5.0.dist-info/METADATA \
   /usr/local/lib/python3.10/site-packages/urllib3-1.26.19.dist-info/METADATA \
   /usr/local/lib/python3.10/site-packages/urllib3-2.6.2.dist-info/METADATA \

@@ -82,7 +82,7 @@ supervisor-checks = "0.8.1"
 ua-parser = "0.18.0"
 urllib3 = "1.26.19"
 user-agents = "2.0"
-werkzeug = "3.0.6"
+werkzeug = "3.1.5"
 wtforms = "2.2.1"
 xlsxwriter = "1.2.2"
 tzlocal = "4.3.1"
@@ -94,9 +94,13 @@ setuptools = "78.1.1"
 h11 = "0.16.0"
 boto3 = "1.38.44"
 protobuf = "4.25.8"
-filelock = { version = "3.20.1", python = ">=3.10" }
+filelock = { version = "3.20.3", python = ">=3.10" }
 marshmallow = "3.26.2"
 pynacl = "1.6.2"
+# Security updates for transitive dependencies
+azure-core = ">=1.38.0"
+pyasn1 = ">=0.6.2"
+virtualenv = ">=20.36.1"
 
 [tool.poetry.group.all_ds]
 optional = true
