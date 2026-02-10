@@ -36,7 +36,6 @@ Redash supports more than 35 SQL and NoSQL [data sources](https://redash.io/help
 - Amazon Redshift
 - ArangoDB
 - Axibase Time Series Database
-- Apache Cassandra
 - ClickHouse
 - CockroachDB
 - Couchbase
@@ -58,8 +57,6 @@ Redash supports more than 35 SQL and NoSQL [data sources](https://redash.io/help
 - Google Spreadsheets
 - Graphite
 - Greenplum
-- Apache Hive
-- Apache Impala
 - InfluxDB
 - InfluxDBv2
 - IBM Netezza Performance Server
@@ -86,7 +83,6 @@ Redash supports more than 35 SQL and NoSQL [data sources](https://redash.io/help
 - Rockset
 - RisingWave
 - Salesforce
-- ScyllaDB
 - Shell Scripts
 - Snowflake
 - SPARQL

@@ -119,10 +119,15 @@ RUN rm -rf /etc/poetry/venv/lib/python3.10/site-packages/setuptools/_vendor/jara
   /usr/local/lib/python3.10/site-packages/setuptools/__vendor/jaraco.context-*.dist-info \
   2>/dev/null || true
 
+RUN pip install --upgrade wheel==0.46.2
+
 RUN rm -f /etc/poetry/venv/lib/python3.10/site-packages/setuptools-65.5.0.dist-info/METADATA \
   /usr/local/lib/python3.10/site-packages/urllib3-1.26.19.dist-info/METADATA \
   /usr/local/lib/python3.10/site-packages/urllib3-2.6.2.dist-info/METADATA \
-  /usr/local/lib/python3.10/site-packages/pip-23.0.1.dist-info/METADATA
+  /usr/local/lib/python3.10/site-packages/pip-23.0.1.dist-info/METADATA \
+  /usr/local/lib/python3.10/site-packages/wheel-0.45.1.dist-info/METADATA \
+  /usr/local/lib/python3.10/site-packages/setuptools/__vendor/wheel-0.45.1.dist-info/METADATA \
+  /etc/poetry/venv/lib/python3.10/site-packages/setuptools/__vendor/wheel-0.45.1.dist-info/METADATA
 COPY --chown=redash . /app
 COPY --from=frontend-builder --chown=redash /frontend/client/dist /app/client/dist
 RUN chown redash /app
