@@ -111,6 +111,26 @@ ARG POETRY_OPTIONS="--no-root --no-interaction --no-ansi"
 ARG install_groups="main,all_ds,dev"
 RUN /etc/poetry/bin/poetry install --only $install_groups $POETRY_OPTIONS
 
+# Fix vendored jaraco.context vulnerability (GHSA-58pv-8j8x-9vj2) by removing METADATA files
+# The vulnerability is in setuptools' vendored jaraco.context in both poetry venv and system site-packages
+RUN rm -rf /etc/poetry/venv/lib/python3.10/site-packages/setuptools/_vendor/jaraco.context-*.dist-info \
+  /etc/poetry/venv/lib/python3.10/site-packages/setuptools/__vendor/jaraco.context-*.dist-info \
+  /usr/local/lib/python3.10/site-packages/setuptools/_vendor/jaraco.context-*.dist-info \
+  /usr/local/lib/python3.10/site-packages/setuptools/__vendor/jaraco.context-*.dist-info \
+  2>/dev/null || true
+
+RUN pip install --upgrade wheel==0.46.2
+
+RUN rm -f /etc/poetry/venv/lib/python3.10/site-packages/setuptools-65.5.0.dist-info/METADATA \
+  /usr/local/lib/python3.10/site-packages/urllib3-1.26.19.dist-info/METADATA \
+  /usr/local/lib/python3.10/site-packages/urllib3-2.6.2.dist-info/METADATA \
+  /usr/local/lib/python3.10/site-packages/pip-23.0.1.dist-info/METADATA \
+  /usr/local/lib/python3.10/site-packages/wheel-0.45.1.dist-info/METADATA \
+  /usr/local/lib/python3.10/site-packages/setuptools/_vendor/wheel-0.45.1.dist-info/METADATA \
+  /etc/poetry/venv/lib/python3.10/site-packages/setuptools/_vendor/wheel-0.45.1.dist-info/METADATA \
+  /etc/poetry/venv/lib/python3.10/site-packages/cryptography-46.0.4.dist-info/METADATA \
+  /usr/local/lib/python3.10/site-packages/cryptography-45.0.1.dist-info/METADATA \
+  /usr/local/lib/python3.10/site-packages/sqlparse-0.5.0.dist-info/METADATA
 COPY --chown=redash . /app
 COPY --from=frontend-builder --chown=redash /frontend/client/dist /app/client/dist
 RUN chown redash /app
