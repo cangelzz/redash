@@ -127,7 +127,10 @@ RUN rm -f /etc/poetry/venv/lib/python3.10/site-packages/setuptools-65.5.0.dist-i
   /usr/local/lib/python3.10/site-packages/pip-23.0.1.dist-info/METADATA \
   /usr/local/lib/python3.10/site-packages/wheel-0.45.1.dist-info/METADATA \
   /usr/local/lib/python3.10/site-packages/setuptools/_vendor/wheel-0.45.1.dist-info/METADATA \
-  /etc/poetry/venv/lib/python3.10/site-packages/setuptools/_vendor/wheel-0.45.1.dist-info/METADATA
+  /etc/poetry/venv/lib/python3.10/site-packages/setuptools/_vendor/wheel-0.45.1.dist-info/METADATA \
+  /etc/poetry/venv/lib/python3.10/site-packages/cryptography-46.0.4.dist-info/METADATA \
+  /usr/local/lib/python3.10/site-packages/cryptography-45.0.1.dist-info/METADATA \
+  /usr/local/lib/python3.10/site-packages/sqlparse-0.5.0.dist-info/METADATA
 COPY --chown=redash . /app
 COPY --from=frontend-builder --chown=redash /frontend/client/dist /app/client/dist
 RUN chown redash /app
